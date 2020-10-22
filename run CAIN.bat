@@ -1,7 +1,7 @@
 @echo off
 
 timeout 2 >nul
-echo NOTES: This thing doesn't supports audio exporting since I'm to lazy to do it on the first version
+echo Changelog: added support for audio exporting
 timeout 3 >nul
 echo It's not perfect but it does the job
 timeout 2 >nul
