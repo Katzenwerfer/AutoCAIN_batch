@@ -2,7 +2,7 @@
 timeout 2 >nul
 echo Version 3
 timeout 2 >nul
-echo Changelog: added support for gif (No alpha channel)
+echo Changelog: added support for gif (w/ alpha too)
 echo            Moved some commands here and there
 timeout 2 >nul
 echo.
