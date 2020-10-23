@@ -2,7 +2,7 @@
 timeout 2 >nul
 echo Version 3
 timeout 2 >nul
-echo Changelog: added support for gif (No alpha channel)
+echo Changelog: added support for gif (w/ alpha too)
 echo            Moved some commands here and there
 timeout 2 >nul
 echo.
@@ -13,10 +13,11 @@ rem Frame extraction
 
 echo.
 set /p videopath="Enter your video directory: "
+set /p alphan="Is input a gif?(y/n): "
 echo.
 echo Initializing frame extraction...
 md Original_frames >nul
-ffmpeg -loglevel quiet -i %videopath% "%cd%\Original_frames\%%06d.png"
+if %alphan%==y (ffmpeg -loglevel quiet -i %videopath% -c:v libx264 -preset veryslow -crf 0 %cd%\gif.mp4 & ffmpeg -loglevel quiet -i %cd%\gif.mp4 "%cd%\Original_frames\%%06d.png" & del /q %cd%\gif.mp4) else (ffmpeg -loglevel quiet -i %videopath% "%cd%\Original_frames\%%06d.png")
 echo Frame extraction completed...
 timeout 2 >nul
 
@@ -34,9 +35,9 @@ rem Frame to video
 echo.
 set /p ftv="Want to convert the frames to video (y/n): "
 if %ftv%==y (set /p audio="Does input has audio?(y/n): ")
-if %ftv%==y (set /p gif="Want gif instead of video?(y/n): " & set audio=null & set ftv=n)
+if %ftv%==y (set /p gif="Want gif instead of video?(y/n): ")
+if %gif%==y (ffmpeg -loglevel quiet -i %videopath% -vf palettegen "%cd%\palette.png" & set audio=null & set ftv=n)
 if %audio%==y (ffmpeg -loglevel quiet -i %videopath% "%cd%\Audio.wav")
-if %gif%==y (ffmpeg -loglevel quiet -i %videopath% -vf palettegen "%cd%\palette.png")
 if %ftv%==y (set /p framerate="Please specify the framerate: " & set /p crf="Please specify a CRF value: " & echo Generating video, please wait) else (echo Ok... & set audio=null)
 if %gif%==y (set /p framerate="Please specify the framerate: " & echo Generating gif, please wait)
 if %audio%==y (ffmpeg.exe -loglevel quiet -framerate %framerate% -i "%cd%\Interpolated_frames\%%6d.png" -i "%cd%\Audio.wav" -c:v libx264 -preset veryslow -crf %crf% -c:a aac "%cd%\FinalVideo.mp4" & echo Video finished, check out the folder for the result)
