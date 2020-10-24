@@ -1,6 +1,6 @@
 @echo off
 timeout 2 >nul
-echo Version 3
+echo Version 4
 timeout 2 >nul
 echo Changelog: added support for gif (w/ alpha too)
 echo            Moved some commands here and there
