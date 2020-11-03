@@ -8,7 +8,7 @@ ffmpeg
 cain ncnn vulkan (https://github.com/nihui/cain-ncnn-vulkan/actions)
 
 ## How to use it:
-Just run the .bat imao and answer what the program asks
+Just run the .bat imao, and answer what the program asks
 
 There is also a .bat that deletes the cache if you are too lazy to do it yourself
 
