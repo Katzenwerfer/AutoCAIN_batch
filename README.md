@@ -17,8 +17,6 @@ There is also a .bat that deletes the cache if you are too lazy to do it yoursel
 ## To do list:
 -Optimize the code
 
--Make AutoCAIN detect if input is gif or mp4
-
 -Add option to select output folder in ftv
 
 -Maybe add option to select an output folder like DAIN-APP
