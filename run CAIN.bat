@@ -1,4 +1,5 @@
 @echo off
+cd /d "%~dp0"
 timeout 1 >nul
 echo Version 5
 timeout 1 >nul
