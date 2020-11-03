@@ -1,4 +1,5 @@
 @echo
+cd /d "%~dp0"
 
 :: CRF value
 set crf="15"
@@ -32,7 +33,7 @@ timeout 2>nul
 echo.
 echo Converting frames to video/gif
 :: Temporary disabled--if %gif%==y (ffmpeg.exe -loglevel quiet -i "%cd%\folder\Interpolated_frames\%%6d.png" -i "%cd%\palette.png" -filter_complex "[0:v][1:v] paletteuse" -framerate %rate2x% "%cd%\folder\FinalGIF.gif" & del /q "%cd%\palette.png" & set ftv=null)
-if %ftv%==y (ffmpeg -i "%cd%\folder\Interpolated_frames\%%6d.png" -c:v %vcodec% -preset %preset% -crf %crf% -framerate %rate2x% "%cd%\FinalVideo.mp4")
+if %ftv%==y (ffmpeg -loglevel quiet -i "%cd%\folder\Interpolated_frames\%%6d.png" -c:v %vcodec% -preset %preset% -crf %crf% -framerate %rate2x% "%cd%\FinalVideo.mp4")
 rd /s /q "%cd%\folder\" >nul
 del /q "%cd%\rate" >nul
 timeout 2 >nul
@@ -53,5 +54,3 @@ timeout 1 >nul
 :: ffmpeg.exe
 :: cain-ncnn-vulkan.exe
 :: ffprobe.exe
-
-pause
