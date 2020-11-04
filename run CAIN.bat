@@ -1,5 +1,6 @@
 @echo off
 cd /d "%~dp0"
+if not defined in_subprocess (cmd /k set in_subprocess=y ^& %0 %*) & exit )
 timeout 1 >nul
 echo Version 5
 timeout 1 >nul
@@ -74,12 +75,10 @@ if %ftv%==y (set gif=n & set /p gif="Want gif instead of video?(y/n): ")
 if %gif%==y (ffmpeg -loglevel quiet -i %videopath% -vf palettegen "%cd%\palette.png" & set audio=null & set ftv=n)
 if %ftv%==y (echo. & echo Output fps estimated to be %framerate%fps & set /p framerate="Please specify the output framerate (skip if detection is correct): " & set crf=15 & set /p crf="Please specify a CRF value (default=15): " & echo Generating video, please wait) else (echo Ok... & set audio=null)
 if %gif%==y (echo. & echo Output fps estimated to be %framerate%fps & set /p framerate="Please specify the output framerate (skip if detection is correct): " & echo Generating gif, please wait)
-if %audio%==y (ffmpeg.exe -loglevel quiet -framerate %framerate% -i "%cd%\%IFrames%\%%6d.png" -i "%videopath%" -map 0:v -map 1:a -c:v libx264 -preset veryslow -crf %crf% "%cd%\FinalVideo.mp4" & echo Video finished, check out the folder for the result)
+if %audio%==y (ffmpeg.exe -loglevel quiet -framerate %framerate% -i "%cd%\%IFrames%\%%6d.png" -i %videopath% -map 0:v -map 1:a -c:v libx264 -preset veryslow -crf %crf% "%cd%\FinalVideo.mp4" & echo Video finished, check out the folder for the result)
 if %audio%==n (ffmpeg.exe -loglevel quiet -framerate %framerate% -i "%cd%\%IFrames%\%%6d.png" -c:v libx264 -preset veryslow -crf %crf% "%cd%\FinalVideo.mp4" & echo Video finished, check out the folder for the result)
 if %gif%==y (ffmpeg.exe -loglevel quiet -framerate %framerate% -i "%cd%\%IFrames%\%%6d.png" -i "%cd%\palette.png" -filter_complex "[0:v][1:v] paletteuse" "%cd%\FinalGIF.gif")
 timeout 2 >nul
-
-:End
 
 :: Delete cache
 echo.
