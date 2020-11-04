@@ -13,7 +13,7 @@ echo.
 echo It's not perfect but it does the job
 timeout 2 >nul
 echo.
-set videopath="%1"
+set videopath=%1
 set input=n & set /p input="Want to use png sequence instead?(y/n): "
 if %input%==y (goto :Sequence) else (goto :VideoInput)
 timeout 1 >nul
