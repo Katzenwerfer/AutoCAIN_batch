@@ -9,11 +9,22 @@ ffprobe
 
 cain ncnn vulkan (https://github.com/nihui/cain-ncnn-vulkan/actions)
 
-dain ncnn vulkan (https://github.com/nihui/dain-ncnn-vulkan) [optional]
-
 ## How to use it:
-Similar to AutoCAIN_batch
+Just run the .bat, and answer what the program asks
 
-Just run the batch or drag&drop your video into it
+There is also a .bat that deletes the cache if you are too lazy to do it yourself
 
-AutoCAIN_2x_audio only works with drag&drop
+## To do list:
+-Optimize the code
+
+-Add option to select output folder in ftv
+
+-Maybe add option to select an output folder like DAIN-APP
+
+-Add option to input your own cain extra argumments
+	or more options indeed
+
+-Add option to input your own ffmpeg command in ftv
+	or more options indeed
+
+-Implement a menu in general
