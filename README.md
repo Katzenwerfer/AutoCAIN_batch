@@ -1,5 +1,5 @@
 # AutoCAIN_batch
-Batch script to run the ncnn implementation of CAIN (Channel Attention Is All You Need for Video Frame Interpolation.)
+Batchfile script to run the ncnn implementation of CAIN (Channel Attention Is All You Need for Video Frame Interpolation.)
 
 ## Requirements (All need to be in the same folder as the .bat)
 
