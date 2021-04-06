@@ -1,4 +1,9 @@
 # AutoCAIN_batch
+
+##
+## I'm not updating this anymore. feel free to make changes to it in a fork or something, idk, go nuts.
+##
+
 Batchfile script to run the ncnn implementation of CAIN (Channel Attention Is All You Need for Video Frame Interpolation.)
 
 ## Requirements (All need to be in the same folder as the .bat)
@@ -14,7 +19,7 @@ Just run the .bat, and answer what the program asks
 
 There is also a .bat that deletes the cache if you are too lazy to do it yourself
 
-## To do list:
+## Old To do list:
 -Optimize the code
 
 -Add option to select output folder in ftv (frame to video)
